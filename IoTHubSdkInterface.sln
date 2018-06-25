@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTHubSdkInterface", "IoTHubSdkInterface\IoTHubSdkInterface.csproj", "{FE187F40-C48F-418C-B231-2473C53C4E66}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE187F40-C48F-418C-B231-2473C53C4E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE187F40-C48F-418C-B231-2473C53C4E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE187F40-C48F-418C-B231-2473C53C4E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE187F40-C48F-418C-B231-2473C53C4E66}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA13DA0A-6641-427F-8677-EEFB11FDC81A}
+	EndGlobalSection
+EndGlobal
