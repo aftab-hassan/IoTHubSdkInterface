@@ -35,6 +35,7 @@ API Description
 		Serial	API use case	API Signature	API Description
 	1	Add a device	
 
+		Note : This API requires that you spin up an IoT hub prior to adding a device.
 
 		async Task<DeviceInfo> AddDeviceAsync (Endpoint endpoint) - Add a device given the IoT hub connection string and device id.
 				
