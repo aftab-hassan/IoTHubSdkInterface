@@ -179,7 +179,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IoTHubSdkInterface.cs" />
+    <Compile Include="IoTHubSdkWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

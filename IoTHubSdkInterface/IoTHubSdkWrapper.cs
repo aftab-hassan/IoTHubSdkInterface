@@ -8,9 +8,9 @@ using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.Devices.Common.Exceptions;
 using Microsoft.Azure.Devices.Shared;
 
-namespace IoTHubSdkInterface
+namespace LibIoTHubSdkWrapper
 {
-    public class LibSdk : IDisposable
+    public class IoTHubSdkWrapper : IDisposable
     {
         public delegate Task LibCallback(Dictionary<string, string> desiredProperties);
 
@@ -21,7 +21,7 @@ namespace IoTHubSdkInterface
         };
         private Dictionary<TransportType, Microsoft.Azure.Devices.Client.TransportType> typeMapping = new Dictionary<TransportType, Microsoft.Azure.Devices.Client.TransportType>();
 
-        public LibSdk()
+        public IoTHubSdkWrapper()
         {
             typeMapping.Add(TransportType.Amqp, Microsoft.Azure.Devices.Client.TransportType.Amqp);
             typeMapping.Add(TransportType.Http1, Microsoft.Azure.Devices.Client.TransportType.Http1);
