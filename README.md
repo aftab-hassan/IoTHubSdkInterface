@@ -1,3 +1,12 @@
+Steps for a client application to use the dll
+---------------------------------------------
+
+	1. Create a console application
+	2. Right click project -> Add -> Reference -> choose the IoTHubSdkInterface.dll
+	3. Add the following using directives
+		a. using IoTHubSdkInterface;
+	4. A sample client that uses the IoTHubSdkInterface.dll library can be found here and could be used as a reference : https://github.com/aftab-hassan/SampleClientApplicationForIoTHubSdkInterface
+
 OneNote
 -------
 	Find instructions and design notes here https://microsoft.sharepoint.com/teams/Azure_IoT/_layouts/OneNote.aspx?id=%2Fteams%2FAzure_IoT%2FShared%20Documents%2FEngineering%2FIoTHubNotes&wd=target%28New%20Section%201.one%7CBF1EB0D4-CCD7-4C81-BB3A-5E581824CBFD%2FDevice%20Simulator%20for%20Azure%20IoT%20on%20Azure%20Stack%7C843A0634-3809-4F8A-979B-2DD89D8516CB%2F%29
@@ -73,13 +82,3 @@ API Description
 				        
 				Return value
 				        None
-
-
-Steps for a client application to use the dll
----------------------------------------------
-
-	1. Create a console application
-	2. Right click project -> Add -> Reference -> choose the IoTHubSdkInterface.dll
-	3. Add the following using directives
-		a. using IoTHubSdkInterface;
-	4. A sample client that uses the IoTHubSdkInterface.dll library can be found here and could be used as a reference : https://github.com/aftab-hassan/SampleClientApplicationForIoTHubSdkInterface
