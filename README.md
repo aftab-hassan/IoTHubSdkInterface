@@ -1,3 +1,8 @@
+OneNote
+-------
+	Find instructions and design notes here https://microsoft.sharepoint.com/teams/Azure_IoT/_layouts/OneNote.aspx?id=%2Fteams%2FAzure_IoT%2FShared%20Documents%2FEngineering%2FIoTHubNotes&wd=target%28New%20Section%201.one%7CBF1EB0D4-CCD7-4C81-BB3A-5E581824CBFD%2FDevice%20Simulator%20for%20Azure%20IoT%20on%20Azure%20Stack%7C843A0634-3809-4F8A-979B-2DD89D8516CB%2F%29
+onenote:https://microsoft.sharepoint.com/teams/Azure_IoT/Shared%20Documents/Engineering/IoTHubNotes/New%20Section%201.one#Device%20Simulator%20for%20Azure%20IoT%20on%20Azure%20Stack&section-id={BF1EB0D4-CCD7-4C81-BB3A-5E581824CBFD}&page-id={843A0634-3809-4F8A-979B-2DD89D8516CB}&end
+
 List of APIs
 ------------
  
