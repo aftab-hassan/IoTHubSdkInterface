@@ -12,6 +12,8 @@ namespace IoTHubSdkInterface
 {
     public class LibSdk : IDisposable
     {
+        public delegate Task LibCallback(Dictionary<string, string> desiredProperties);
+
         private DeviceClient Client = null;
         public enum TransportType
         {
@@ -55,7 +57,7 @@ namespace IoTHubSdkInterface
         }
 
         // 2. Send message from device to cloud
-        public async Task<Result> SendMessageD2CAsync(DeviceInfo deviceInfo, List<Telemetry> data, TransportType type)
+        public async Task<Result> SendMessageD2CAsync(DeviceInfo deviceInfo, List<TelemetryData> data, TransportType type)
         {
             DeviceClient deviceClient = DeviceClient.CreateFromConnectionString(deviceInfo.PrimaryKeyConnectionString, typeMapping[type]);
 
@@ -79,17 +81,33 @@ namespace IoTHubSdkInterface
         }
 
         // 3. Receive desired property change from cloud to device
-        public async Task ReceiveC2DDesiredPropertyChangeAsync(DeviceInfo deviceInfo, DesiredPropertyUpdateCallback callback)
+        public async Task ReceiveC2DDesiredPropertyChangeAsync(DeviceInfo deviceInfo, LibCallback callback, TransportType type)
         {
-            TaskCompletionSource<Result> tcs = new TaskCompletionSource<Result>();
-
             Console.WriteLine("Connecting to hub");
-            Client = DeviceClient.CreateFromConnectionString(deviceInfo.PrimaryKeyConnectionString, Microsoft.Azure.Devices.Client.TransportType.Mqtt);
-            await Client.SetDesiredPropertyUpdateCallbackAsync(callback, null);
+            //Client = DeviceClient.CreateFromConnectionString(deviceInfo.PrimaryKeyConnectionString, Microsoft.Azure.Devices.Client.TransportType.Mqtt);
+            Client = DeviceClient.CreateFromConnectionString(deviceInfo.PrimaryKeyConnectionString, typeMapping[type]);
+            await Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, callback);
         }
 
         // Supporting methods
-        private async Task SendEvent(DeviceClient deviceClient, List<Telemetry> data)
+        private static async Task OnDesiredPropertyChanged(Microsoft.Azure.Devices.Shared.TwinCollection desiredProperties, object userContext)
+        {
+            Dictionary<string, string> returnDict = new Dictionary<string, string>();
+
+            Console.WriteLine("desired property change:");
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(desiredProperties));
+            desiredProperties.OfType<KeyValuePair<string, object>>().All(s =>
+            {
+                returnDict.Add(s.Key, s.Value.ToString());
+                return true;
+            });
+            
+            await Task.Delay(100);
+            await ((LibCallback)userContext)(returnDict);
+            return;
+        }
+
+        private async Task SendEvent(DeviceClient deviceClient, List<TelemetryData> data)
         {
             string dataBuffer = "[";
 
@@ -160,11 +178,11 @@ namespace IoTHubSdkInterface
         }
     }
 
-    public class Telemetry
+    public class TelemetryData
     {
         public Dictionary<string, string> KeyValuePair;
 
-        public Telemetry(Dictionary<string, string> keyValuePair)
+        public TelemetryData(Dictionary<string, string> keyValuePair)
         {
             this.KeyValuePair = keyValuePair;
         }
